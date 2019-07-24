@@ -1,0 +1,98 @@
+<html>
+<head>
+<link href="../assets/css/bootstrap-4.0.0.css" rel="stylesheet"
+	id="bootstrap-css">
+<link href="../assets/css/bootstrap-grid-4.0.0.css" rel="stylesheet"
+	id="bootstrap-grid-css">
+<link href="../assets/css/font-awesome.css" rel="stylesheet">
+<link href="../assets/css/calendar.css" rel="stylesheet">
+<link href="../assets/css/bootstrap-db.css" rel="stylesheet"
+	id="bootstrap-db-css">
+<script src="../assets/js/jquery-3.4.1.min.js"></script>
+<script src="../assets/js/popper.min.js"></script>
+<script src="../assets/js/bootstrap-4.0.0.min.js"></script>
+<script src="../assets/js/bootstrap-db-datasource.js"></script>
+</head>
+
+
+<body>
+	<div class="container-fluid">
+		<div id="holder" class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header text-white bg-primary">
+						<span class="fa fa-list">&nbsp;</span>Lista utenti
+						<div class="pull-right action-buttons"></div>
+					</div>
+					<div class="card-body">
+						<table id='dbTable_utenti'
+							class="table table-striped table-bordered dataTable"
+							style="width: 100%;"></table>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- TabContent -->
+		<div id="dbDataForm"></div>
+	</div>
+
+
+
+
+	<script>
+
+$.urlParam = function(name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null) {
+       return null;
+    }
+    return decodeURI(results[1]) || 0;
+}
+
+class MainWindow {
+
+	constructor() {
+		this.dsu = new Datasource('../db/servlet');
+	}
+	
+	init() {
+		// USER SIMPLE USE
+		this.dsu.addTable('utenti', 'U');
+
+		this.dsu.addTextField('U', 'idutente', 'Id utente');
+		this.dsu.addTextField('U', 'cognome', 'Cognome', true, true, 1);
+		this.dsu.addTextField('U', 'nome', 'Nome', true, true, 1);
+		this.dsu.addTextField('U', 'username', 'Username', true, true);
+		this.dsu.addTextField('U', 'password', 'Password', false, false);
+		this.dsu.addTextField('U', 'email', 'E-mail', true, true);
+		this.dsu.addTextField('U', 'iniziali', 'Iniziali', true, true);
+		this.dsu.addTextField('U', 'telefono', 'Telefono', true, true);
+		this.dsu.addTextField('U', 'cellulare', 'Cellulare', true, true);
+		this.dsu.addTextField('U', 'idaxwin', 'Id Axwin');
+		this.dsu.addTextField('U', 'ultimoaccesso');
+		this.dsu.addTextField('U', 'accessoattuale');
+		this.dsu.addTextFieldYesNo('U', 'rubrica', 'Presenza rubrica', false, true, 0);
+		this.dsu.addTextFieldYesNo('U', 'deleted', 'Disabilitato', false, true, 0);
+
+		this.grid = new DataGrid(this.dsu, 'dbTable_utenti', 'utenti', 0);
+		this.grid.dataFormDiv = 'dbDataForm';
+		this.grid.enableInsert();
+		this.grid.enableUpdate();
+		this.grid.enableDelete();
+		
+		this.grid.draw();
+	}
+}
+
+
+// START
+$(function () {
+	  new MainWindow().init();
+});
+	
+
+</script>
+</body>
+</html>
