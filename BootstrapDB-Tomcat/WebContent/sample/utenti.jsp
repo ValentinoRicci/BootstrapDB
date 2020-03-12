@@ -1,17 +1,14 @@
 <html>
 <head>
-<link href="../assets/css/bootstrap-4.0.0.css" rel="stylesheet"
-	id="bootstrap-css">
-<link href="../assets/css/bootstrap-grid-4.0.0.css" rel="stylesheet"
-	id="bootstrap-grid-css">
-<link href="../assets/css/font-awesome.css" rel="stylesheet">
-<link href="../assets/css/calendar.css" rel="stylesheet">
-<link href="../assets/css/bootstrap-db.css" rel="stylesheet"
-	id="bootstrap-db-css">
-<script src="../assets/js/jquery-3.4.1.min.js"></script>
-<script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrap-4.0.0.min.js"></script>
-<script src="../assets/js/bootstrap-db-datasource.js"></script>
+	<link href="../assets/css/bootstrap-4.0.0.css" rel="stylesheet"	id="bootstrap-css">
+	<link href="../assets/css/font-awesome.css" rel="stylesheet">
+	
+	<script src="../assets/js/jquery-3.4.1.min.js"></script>
+	<script src="../assets/js/popper.min.js"></script>
+	<script src="../assets/js/bootstrap-4.0.0.min.js"></script>
+	
+	<link href="../assets/css/bootstrap-db.css" rel="stylesheet" id="bootstrap-db-css">
+	<script src="../assets/js/bootstrap-db-datasource.js"></script>
 </head>
 
 <style>
